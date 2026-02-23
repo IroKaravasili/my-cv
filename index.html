@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iro Karavasili | CV</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="constellation" aria-hidden="true"></canvas>
+    <div class="cosmic-depth" aria-hidden="true">
+      <span class="depth-layer depth-back"></span>
+      <span class="depth-layer depth-mid"></span>
+      <span class="depth-layer depth-nebula"></span>
+    </div>
+    <div class="texture" aria-hidden="true"></div>
+    <div class="cursor cursor-dot" aria-hidden="true"></div>
+    <div class="cursor cursor-ring" aria-hidden="true"></div>
+
+    <main class="layout">
+      <header class="hero reveal" id="top">
+        <nav class="top-nav">
+          <a href="#top">Profile</a>
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#education">Education</a>
+          <button class="mode-toggle" type="button" aria-pressed="false">Quiet Mode</button>
+        </nav>
+
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="hero-id">
+              <img
+                class="profile-photo"
+                src="assets/profile.webp?v=2"
+                alt="Iro Karavasili profile picture"
+                loading="eager"
+                decoding="async"
+              />
+              <div>
+                <p class="kicker">Atlassian Engineer - Service Delivery - Process Design</p>
+                <h1>Iro Karavasili</h1>
+              </div>
+            </div>
+
+            <p class="lead">
+              Processes, Methods and Tools Engineer specialized in Atlassian ecosystems, DevOps
+              support, and high-reliability service delivery.
+            </p>
+
+            <div class="hero-actions">
+              <a class="button primary" href="mailto:iro-k@outlook.com">Contact Me</a>
+              <a
+                class="button ghost"
+                href="https://www.linkedin.com/in/iro-karavasili-37379ab8/"
+                target="_blank"
+                rel="noreferrer"
+                >LinkedIn</a
+              >
+            </div>
+
+            <ul class="meta-chips">
+              <li>Greece</li>
+              <li>English</li>
+              <li>French</li>
+            </ul>
+          </div>
+
+          <div class="hero-art variant-minimal" aria-hidden="true">
+            <div class="art-canvas art-canvas-expressive">
+              <div class="paint paint-a"></div>
+              <div class="paint paint-b"></div>
+              <div class="paint paint-c"></div>
+              <div class="stroke stroke-a"></div>
+              <div class="stroke stroke-b"></div>
+              <div class="orb orb-a"></div>
+              <div class="orb orb-b"></div>
+              <div class="spark spark-a"></div>
+              <div class="spark spark-b"></div>
+            </div>
+
+            <div class="art-canvas art-canvas-minimal">
+              <div class="minimal-halo"></div>
+              <div class="minimal-ring"></div>
+              <div class="minimal-ring minimal-ring-b"></div>
+              <div class="minimal-axis"></div>
+              <div class="minimal-dot dot-a"></div>
+              <div class="minimal-dot dot-b"></div>
+              <div class="minimal-dot dot-c"></div>
+            </div>
+
+            <span class="floating-tag tag-a">Jira</span>
+            <span class="floating-tag tag-b">Confluence</span>
+            <span class="floating-tag tag-c">DevOps</span>
+          </div>
+        </div>
+      </header>
+
+      <section class="panel reveal results-panel" aria-label="Career highlights">
+        <ul class="result-grid">
+          <li class="result-item">
+            <p class="result-value">7+</p>
+            <p class="result-label">Years in enterprise delivery and Atlassian ecosystems</p>
+          </li>
+          <li class="result-item">
+            <p class="result-value">5</p>
+            <p class="result-label">Major organizations supported across Europe</p>
+          </li>
+          <li class="result-item">
+            <p class="result-value">40+</p>
+            <p class="result-label">Cross-team workflows optimized or redesigned</p>
+          </li>
+          <li class="result-item">
+            <p class="result-value">100%</p>
+            <p class="result-label">Focus on measurable reliability, clarity, and adoption</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="panel reveal">
+        <div class="split">
+          <article>
+            <p class="section-kicker">Current Focus</p>
+            <h2>Processes, Methods and Tools Engineer (Atlassian tools)</h2>
+            <p>
+              Currently at <strong>Renesas Electronics</strong> as Atlassian DevOps Engineer
+              (October 2024 - Present), driving process consistency and tooling workflows.
+            </p>
+          </article>
+
+          <article>
+            <p class="section-kicker">Core Strengths</p>
+            <ul class="pill-list">
+              <li>Atlassian Administration</li>
+              <li>Jira and Confluence</li>
+              <li>Service Delivery</li>
+              <li>DevOps Support</li>
+              <li>Process Improvement</li>
+              <li>Stakeholder Communication</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel reveal" id="experience">
+        <p class="section-kicker">Experience Journey</p>
+        <h2>Career Timeline</h2>
+
+        <ol class="timeline">
+          <li class="job" data-tilt>
+            <div class="company">
+              <img
+                class="company-logo company-logo-renesas"
+                src="assets/Renesas_Electronics_logo.webp"
+                alt="Renesas Electronics logo"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"
+              />
+              <span class="company-fallback" aria-hidden="true">RE</span>
+              <h3>Renesas Electronics</h3>
+            </div>
+            <p class="role">Atlassian DevOps Engineer</p>
+            <p class="when">October 2024 - Present (1 year 5 months) | Greece</p>
+            <p>Processes, Methods and Tools Engineer.</p>
+          </li>
+
+          <li class="job" data-tilt>
+            <div class="company">
+              <img
+                class="company-logo"
+                src="assets/Mitel_logo.webp"
+                alt="Mitel logo"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"
+              />
+              <span class="company-fallback" aria-hidden="true">MI</span>
+              <h3>Mitel</h3>
+            </div>
+            <p class="role">Service Delivery Manager and Jira/Confluence Administrator</p>
+            <p class="when">October 2023 - October 2024 (1 year 1 month) | Greece</p>
+            <p>Service Delivery Manager and Jira/Confluence administrator.</p>
+          </li>
+
+          <li class="job" data-tilt>
+            <div class="company">
+              <img
+                class="company-logo"
+                src="assets/Atos_logo.webp"
+                alt="Atos logo"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"
+              />
+              <span class="company-fallback" aria-hidden="true">AT</span>
+              <h3>Atos</h3>
+            </div>
+            <p class="role">Career progression through promoted roles</p>
+            <p class="when">July 2018 - October 2023 (5 years 4 months) | Greece</p>
+
+            <div class="role-track">
+              <article class="role-step">
+                <p class="step-title">Service Delivery Manager and Jira/Confluence Administrator</p>
+                <p class="step-when">2020 - October 2023 (3 years) | Greece</p>
+                <p>Service Delivery Manager and Jira/Confluence administrator.</p>
+              </article>
+
+              <article class="role-step">
+                <p class="step-title">Jira/Confluence Administrator</p>
+                <p class="step-when">
+                  December 2018 - October 2023 (4 years 11 months) | Athens, Attiki, Greece
+                </p>
+                <p>JIRA/Confluence Systems Administrator.</p>
+              </article>
+
+              <article class="role-step">
+                <p class="step-title">DevOps Engineer Intern</p>
+                <p class="step-when">July 2018 - December 2018 (6 months) | Greece</p>
+                <p>JIRA/Confluence administrator.</p>
+              </article>
+            </div>
+          </li>
+
+          <li class="job" data-tilt>
+            <div class="company">
+              <img
+                class="company-logo"
+                src="assets/book.webp"
+                alt="Book logo"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"
+              />
+              <span class="company-fallback" aria-hidden="true">PL</span>
+              <h3>Private Lessons</h3>
+            </div>
+            <p class="role">Private Tutor</p>
+            <p class="when">September 2009 - June 2018 (8 years 10 months) | Athens, Greece</p>
+            <p>
+              Delivered one-on-one tutoring across mathematics, physics, statistics, reading skills,
+              and test preparation. Worked with students and parents to track progress and improve
+              study outcomes.
+            </p>
+          </li>
+
+          <li class="job" data-tilt>
+            <div class="company">
+              <img
+                class="company-logo company-logo-lgcns"
+                src="assets/lg_cns_logo.webp"
+                alt="LG CNS logo"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"
+              />
+              <span class="company-fallback" aria-hidden="true">LG</span>
+              <h3>LG CNS Greek Branch</h3>
+            </div>
+            <p class="role">Technical Support Staff</p>
+            <p class="when">October 2017 - November 2017 (2 months)</p>
+            <p>
+              Supported the new electronic ticketing system for Athens public transport, including
+              personalized ATH.ENA Card issuance.
+            </p>
+          </li>
+
+          <li class="job" data-tilt>
+            <div class="company">
+              <img
+                class="company-logo company-logo-elstat"
+                src="assets/elstat_logo.webp"
+                alt="ELSTAT logo"
+                loading="lazy"
+                referrerpolicy="no-referrer"
+                onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"
+              />
+              <span class="company-fallback" aria-hidden="true">EL</span>
+              <h3>Hellenic Statistical Authority (ELSTAT)</h3>
+            </div>
+            <p class="role">Statistical Data Intern</p>
+            <p class="when">July 2014 - August 2014 (2 months) | Greece</p>
+            <p>
+              Supported the 2014 Annual Agricultural Statistical Survey in the Agriculture and
+              Livestock Statistics division, assisting with data transmission through a web
+              application.
+            </p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="panel reveal" id="projects">
+        <p class="section-kicker">Selected Projects</p>
+        <h2>Impact Highlights</h2>
+        <div class="projects-grid">
+          <article class="project-card">
+            <p class="project-kicker">Renesas Electronics</p>
+            <h3>Atlassian Process Governance Layer</h3>
+            <p class="project-copy">
+              Structured Jira and Confluence process rules for consistency across teams, improving
+              workflow clarity and reducing escalation friction.
+            </p>
+            <ul class="project-impact">
+              <li>Introduced standardized workflow patterns</li>
+              <li>Improved cross-team transparency in delivery tracking</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <p class="project-kicker">Atos</p>
+            <h3>Service Delivery and Atlassian Platform Scaling</h3>
+            <p class="project-copy">
+              Supported progressive role expansion from intern to service delivery manager while
+              operating Jira/Confluence environments at enterprise scale.
+            </p>
+            <ul class="project-impact">
+              <li>Aligned tooling operations with service-delivery KPIs</li>
+              <li>Enabled smoother adoption through clearer admin patterns</li>
+            </ul>
+          </article>
+
+          <article class="project-card">
+            <p class="project-kicker">Mitel</p>
+            <h3>Workflow Stabilization for Operational Teams</h3>
+            <p class="project-copy">
+              Balanced service delivery ownership with Atlassian administration to support reliable
+              execution and cleaner collaboration between stakeholders.
+            </p>
+            <ul class="project-impact">
+              <li>Reduced ambiguity in day-to-day operational handoffs</li>
+              <li>Improved traceability between requests and outcomes</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel reveal" id="education">
+        <div class="split">
+          <article>
+            <p class="section-kicker">Education</p>
+            <h2>National Technical University of Athens</h2>
+            <p class="role">Bachelor and Master Degrees</p>
+            <p class="when">School of Applied Mathematical and Physical Science | 2009 - 2018</p>
+          </article>
+
+          <article>
+            <p class="section-kicker">Certifications</p>
+            <ul class="plain-list">
+              <li>ITIL Foundation Level</li>
+              <li>ECPE</li>
+              <li>Google Certificate in Project Management</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
