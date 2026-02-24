@@ -1,76 +1,124 @@
-  
+Iro Karavasili
+Atlassian Engineer - Service Delivery - Process Design
+
 Contact
-iro-k@outlook.com
-https://www.linkedin.com/in/iro-karavasili-37379ab8/
+Email: iro-k@outlook.com
+LinkedIn: https://www.linkedin.com/in/iro-karavasili-37379ab8/
+Location: Greece
+Languages: English, French
 
-Languages
-English
-French
+Professional Summary
+Processes, Methods and Tools Engineer specialized in Atlassian ecosystems,
+DevOps support, and high-reliability service delivery.
 
-Certifications
-ITIL Foundation Level
-ECPE
-Google Certificate in Project
-Management
+Current Focus
+Processes, Methods and Tools Engineer (Atlassian tools)
+Currently at Renesas Electronics as Atlassian DevOps Engineer
+(October 2024 - Present), driving process consistency and tooling workflows.
 
-Current role: Processes, Methods and Tools Engineer (Atlassian tools)
-Greece
+Core Strengths
+- Atlassian Platform Administration
+- Cloud & Data Center Expertise
+- Jira & Confluence Configuration
+- Platform Migration
+- Service Delivery & ITSM
+- Process Improvement
+
+Tools and Platforms
+Atlassian Ecosystem
+- Jira
+- Confluence
+- Jira Service Management
+- Bitbucket
+- Atlassian Cloud
+- Atlassian Data Center
+- ScriptRunner
+- Automation & Scripting
+- Python
+
+Delivery and Operations
+- Service Delivery
+- IT Service Management
+- Incident Management
+- SLA Management
+- DevOps Support
+- Operational Support
+- Troubleshooting
+- Cross-Team Coordination
+
+Process and Governance
+- Process Improvement
+- Workflow Configuration
+- Documentation Standards
+- Reporting and Dashboards
+- Stakeholder Communication
+- Platform Migration
 
 Experience
 Renesas Electronics
 Atlassian DevOps Engineer
-October 2024 - Present (1 year 5 months)
-Greece
+October 2024 - Present (1 year 5 months) | Greece
 Processes, Methods and Tools Engineer.
 
 Mitel
 Service Delivery Manager and Jira/Confluence Administrator
-October 2023 - October 2024 (1 year 1 month)
-Greece
-Service Delivery Manager & Jira/Confluence administrator at Mitel
+October 2023 - October 2024 (1 year 1 month) | Greece
+Service Delivery Manager and Jira/Confluence administrator.
+
 Atos
-5 years 4 months
+Career progression through promoted roles
+July 2018 - October 2023 (5 years 4 months) | Greece
+
 Service Delivery Manager and Jira/Confluence Administrator
-2020 - October 2023 (3 years)
-Greece
-Service Delivery Manager & Jira/Confluence administrator at Atos
-Jira/Confluence administrator at Atos
-December 2018 - October 2023 (4 years 11 months)
-Athens, Attiki, Greece
-JIRA/Confluence Systems Administrator
+2020 - October 2023 (3 years) | Greece
+Service Delivery Manager and Jira/Confluence administrator.
+
+Jira/Confluence Administrator
+December 2018 - October 2023 (4 years 11 months) | Athens, Attiki, Greece
+JIRA/Confluence Systems Administrator.
+
 DevOps Engineer Intern
-July 2018 - December 2018 (6 months)
-Greece
-JIRA/Confluence administrator
-Private lessons
+July 2018 - December 2018 (6 months) | Greece
+JIRA/Confluence administrator.
+
+Private Lessons
 Private Tutor
-September 2009 - June 2018 (8 years 10 months)
-Athens, Greece
-As a private tutor I worked with all aged students to improve their study skills
-and to assist them building a strong comprehension in the course material. My subject specialties include mathematics, physics, statistics, reading skills,
-and standard test preparation. 
-I worked one-on-one with the students and I communicated with parents for
-their progress.
+September 2009 - June 2018 (8 years 10 months) | Athens, Greece
+Delivered one-on-one tutoring across mathematics, physics, statistics,
+reading skills, and test preparation. Worked with students and parents to
+track progress and improve study outcomes.
 
 LG CNS Greek Branch
 Technical Support Staff
 October 2017 - November 2017 (2 months)
-Working on new electronic ticketing system project  for the Athens public
-transport network, responsible for personalized ΑΤΗ.ΕΝΑ Card issue.
+Supported the new electronic ticketing system for Athens public transport,
+including personalized ATH.ENA Card issuance.
 
 Hellenic Statistical Authority (ELSTAT)
 Statistical Data Intern
-July 2014 - August 2014 (2 months)
-Greece
-Internship at Hellenic Statistical Authority (ELSTAT - Division of Agriculture
-and
-Livestock Statistics), working on the “2014 Annual Agricultural Statistical
-Survey” as
-auxiliary staff for the transmission of data via the implementation of a relative
-web
-application.
+July 2014 - August 2014 (2 months) | Greece
+Supported the 2014 Annual Agricultural Statistical Survey in the Agriculture
+and Livestock Statistics division, assisting with data transmission through a
+web application.
 
 Education
 National Technical University of Athens
-Bachelor and master degrees,  School of Applied Mathematical and Physical
-Science  · (2009 - 2018)
+Bachelor and Master Degrees
+School of Applied Mathematical and Physical Science | 2009 - 2018
+
+Certifications
+- ITIL Foundation Level
+- ECPE
+- Google Certificate in Project Management
+
+Interests
+Traveling - Routes and City Notes
+I enjoy traveling and exploring local culture, architecture, and daily life.
+
+Plants - Plant Care Routine
+I enjoy caring for plants, a routine that supports calm and attention to detail.
+
+Art and Painting - Artistic Mindset
+Passionate about visual arts, I regularly practice drawing and painting. I
+explore different styles and techniques to strengthen attention to detail and
+creative thinking.
