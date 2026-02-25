@@ -1,9 +1,117 @@
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const reducedData = Boolean(window.navigator.connection && window.navigator.connection.saveData);
+const limitMotion = reducedMotion || reducedData;
 const rootStyle = document.documentElement.style;
 const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-const modeToggle = document.querySelector(".mode-toggle");
-const MOTION_MODE_KEY = "cv_motion_mode";
+const themeToggle = document.querySelector(".mode-toggle");
+const pdfDownloadButton = document.querySelector("[data-download-pdf]");
+const ambientVideo = document.querySelector(".hero-ambient-video");
+const THEME_MODE_KEY = "cv_theme_mode";
 const computedStyles = window.getComputedStyle(document.documentElement);
+const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+let pdfExportRequested = false;
+let themeMode = "dark";
+
+try {
+  const storedTheme = window.localStorage.getItem(THEME_MODE_KEY);
+  if (storedTheme === "light" || storedTheme === "dark") {
+    themeMode = storedTheme;
+  } else {
+    themeMode = prefersDarkScheme ? "dark" : "light";
+  }
+} catch {
+  themeMode = prefersDarkScheme ? "dark" : "light";
+}
+
+function applyThemeMode(nextMode, persist = true) {
+  themeMode = nextMode === "light" ? "light" : "dark";
+  document.body.classList.toggle("theme-light", themeMode === "light");
+  document.body.classList.toggle("theme-dark", themeMode === "dark");
+  document.documentElement.style.colorScheme = themeMode;
+
+  if (themeToggle) {
+    themeToggle.classList.toggle("is-light", themeMode === "light");
+    themeToggle.setAttribute("aria-pressed", String(themeMode === "light"));
+    const nextModeLabel = themeMode === "light" ? "Dark Mode" : "Light Mode";
+    themeToggle.textContent = nextModeLabel;
+    themeToggle.setAttribute("aria-label", `Switch to ${nextModeLabel.toLowerCase()}`);
+    themeToggle.title = `Switch to ${nextModeLabel.toLowerCase()}`;
+  }
+
+  if (persist) {
+    try {
+      window.localStorage.setItem(THEME_MODE_KEY, themeMode);
+    } catch {}
+  }
+}
+
+applyThemeMode(themeMode, false);
+
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    const nextMode = themeMode === "dark" ? "light" : "dark";
+    applyThemeMode(nextMode);
+  });
+}
+
+function setPdfButtonBusyState(isBusy) {
+  if (!pdfDownloadButton) return;
+  pdfDownloadButton.setAttribute("aria-busy", String(isBusy));
+  pdfDownloadButton.disabled = isBusy;
+}
+
+function cleanupPdfExportState() {
+  if (!pdfExportRequested) return;
+  document.body.classList.remove("pdf-exporting");
+  setPdfButtonBusyState(false);
+  pdfExportRequested = false;
+}
+
+if (pdfDownloadButton) {
+  pdfDownloadButton.addEventListener("click", () => {
+    if (typeof window.print !== "function") {
+      window.location.href = "cv.pdf";
+      return;
+    }
+
+    pdfExportRequested = true;
+    setPdfButtonBusyState(true);
+    document.body.classList.add("pdf-exporting");
+    window.print();
+  });
+
+  window.addEventListener("afterprint", cleanupPdfExportState);
+
+  const printMedia = window.matchMedia("print");
+  const onPrintMediaChange = (event) => {
+    if (!event.matches) {
+      cleanupPdfExportState();
+    }
+  };
+
+  if (typeof printMedia.addEventListener === "function") {
+    printMedia.addEventListener("change", onPrintMediaChange);
+  } else if (typeof printMedia.addListener === "function") {
+    printMedia.addListener(onPrintMediaChange);
+  }
+}
+
+if (ambientVideo) {
+  if (limitMotion) {
+    ambientVideo.removeAttribute("autoplay");
+    ambientVideo.pause();
+  }
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      ambientVideo.pause();
+      return;
+    }
+    if (!limitMotion) {
+      ambientVideo.play().catch(() => {});
+    }
+  });
+}
 
 function parseRgbVar(variableName, fallback) {
   const rawValue = computedStyles.getPropertyValue(variableName).trim();
@@ -21,48 +129,16 @@ const mintRgb = [154, 234, 221];
 
 let parallaxAnimationId = null;
 let cursorAnimationId = null;
-let motionMode = "showcase";
+let motionMode = limitMotion ? "quiet" : "showcase";
 
-if (reducedMotion) {
-  motionMode = "quiet";
-} else {
-  const storedMode = window.localStorage.getItem(MOTION_MODE_KEY);
-  motionMode = storedMode === "quiet" ? "quiet" : "showcase";
-}
-
-function applyMotionMode(nextMode, persist = true) {
+function applyMotionMode(nextMode) {
   motionMode = nextMode === "quiet" ? "quiet" : "showcase";
   document.body.classList.toggle("motion-quiet", motionMode === "quiet");
   document.body.classList.toggle("motion-showcase", motionMode === "showcase");
   document.body.dataset.motionMode = motionMode;
-
-  if (modeToggle) {
-    modeToggle.classList.toggle("is-quiet", motionMode === "quiet");
-    modeToggle.setAttribute("aria-pressed", String(motionMode === "quiet"));
-    modeToggle.textContent = motionMode === "quiet" ? "Showcase Mode" : "Quiet Mode";
-  }
-
-  if (!reducedMotion && persist) {
-    window.localStorage.setItem(MOTION_MODE_KEY, motionMode);
-  }
 }
 
-applyMotionMode(motionMode, false);
-
-if (modeToggle) {
-  if (reducedMotion) {
-    modeToggle.disabled = true;
-    modeToggle.textContent = "Motion Off";
-    modeToggle.setAttribute("aria-pressed", "true");
-  } else {
-    modeToggle.addEventListener("click", () => {
-      const nextMode = motionMode === "showcase" ? "quiet" : "showcase";
-      applyMotionMode(nextMode);
-      resizeCanvas();
-      verifyBackgroundAnimation();
-    });
-  }
-}
+applyMotionMode(motionMode);
 
 if (finePointer) {
   const cursorDot = document.querySelector(".cursor-dot");
@@ -114,11 +190,24 @@ if (finePointer) {
       });
     }
 
-    animateCursor();
+    if (!document.hidden) {
+      animateCursor();
+    }
+
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden && cursorAnimationId) {
+        window.cancelAnimationFrame(cursorAnimationId);
+        cursorAnimationId = null;
+        return;
+      }
+      if (!document.hidden && !cursorAnimationId) {
+        animateCursor();
+      }
+    });
   }
 }
 
-if (!reducedMotion) {
+if (!limitMotion) {
   let pointerX = 0;
   let pointerY = 0;
   let scrollShift = 0;
@@ -174,6 +263,17 @@ if (!reducedMotion) {
 
   recomputeTarget();
   updateParallax();
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden && parallaxAnimationId) {
+      window.cancelAnimationFrame(parallaxAnimationId);
+      parallaxAnimationId = null;
+      return;
+    }
+    if (!document.hidden && !parallaxAnimationId) {
+      updateParallax();
+    }
+  });
 } else {
   rootStyle.setProperty("--parallax-x", "0px");
   rootStyle.setProperty("--parallax-y", "0px");
@@ -188,7 +288,7 @@ function verifyBackgroundAnimation() {
     return;
   }
 
-  if (reducedMotion) {
+  if (limitMotion) {
     console.info("[background] Reduced motion enabled. Background animation intentionally disabled.");
     return;
   }
@@ -205,7 +305,7 @@ function verifyBackgroundAnimation() {
 verifyBackgroundAnimation();
 
 const revealElements = [...document.querySelectorAll(".reveal")];
-if (!reducedMotion) {
+if (!limitMotion) {
   const observer = new IntersectionObserver(
     (entries) => {
       for (const entry of entries) {
@@ -230,7 +330,7 @@ if (!reducedMotion) {
 const tiltCards = document.querySelectorAll("[data-tilt]");
 for (const card of tiltCards) {
   card.addEventListener("pointermove", (event) => {
-    if (reducedMotion) return;
+    if (limitMotion) return;
     const rect = card.getBoundingClientRect();
     const x = (event.clientX - rect.left) / rect.width;
     const y = (event.clientY - rect.top) / rect.height;
@@ -245,7 +345,7 @@ for (const card of tiltCards) {
 }
 
 const canvas = document.getElementById("constellation");
-const context = canvas.getContext("2d");
+const context = canvas ? canvas.getContext("2d") : null;
 
 let starParticles = [];
 let cometParticles = [];
@@ -425,18 +525,32 @@ function draw() {
   animationId = window.requestAnimationFrame(draw);
 }
 
-if (!reducedMotion && canvas && context) {
+function stopCanvasAnimation() {
+  if (animationId) {
+    window.cancelAnimationFrame(animationId);
+    animationId = null;
+  }
+}
+
+if (!limitMotion && canvas && context) {
   resizeCanvas();
   draw();
   window.addEventListener("resize", resizeCanvas);
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      stopCanvasAnimation();
+      return;
+    }
+    if (!animationId) {
+      draw();
+    }
+  });
 } else if (canvas) {
   canvas.style.display = "none";
 }
 
 window.addEventListener("beforeunload", () => {
-  if (animationId) {
-    window.cancelAnimationFrame(animationId);
-  }
+  stopCanvasAnimation();
   if (parallaxAnimationId) {
     window.cancelAnimationFrame(parallaxAnimationId);
   }
@@ -444,89 +558,3 @@ window.addEventListener("beforeunload", () => {
     window.cancelAnimationFrame(cursorAnimationId);
   }
 });
-
-function rgbToHsv(r, g, b) {
-  const red = r / 255;
-  const green = g / 255;
-  const blue = b / 255;
-
-  const max = Math.max(red, green, blue);
-  const min = Math.min(red, green, blue);
-  const delta = max - min;
-
-  let hue = 0;
-  if (delta !== 0) {
-    if (max === red) {
-      hue = ((green - blue) / delta) % 6;
-    } else if (max === green) {
-      hue = (blue - red) / delta + 2;
-    } else {
-      hue = (red - green) / delta + 4;
-    }
-  }
-
-  hue = Math.round(hue * 60);
-  if (hue < 0) hue += 360;
-
-  const saturation = max === 0 ? 0 : delta / max;
-  const value = max;
-
-  return [hue, saturation, value];
-}
-
-function modernizeProfileBackground() {
-  const profile = document.querySelector(".profile-photo");
-  if (!profile || profile.dataset.bgModernized === "1") return;
-
-  const applyColorSwap = () => {
-    const width = profile.naturalWidth;
-    const height = profile.naturalHeight;
-    if (!width || !height) return;
-
-    const tempCanvas = document.createElement("canvas");
-    tempCanvas.width = width;
-    tempCanvas.height = height;
-
-    const tempContext = tempCanvas.getContext("2d");
-    tempContext.drawImage(profile, 0, 0, width, height);
-
-    const imageData = tempContext.getImageData(0, 0, width, height);
-    const pixels = imageData.data;
-
-    for (let i = 0; i < pixels.length; i += 4) {
-      const r = pixels[i];
-      const g = pixels[i + 1];
-      const b = pixels[i + 2];
-
-      const [h, s, v] = rgbToHsv(r, g, b);
-      const yellowRange = h >= 46 && h <= 95 && s > 0.35 && v > 0.42;
-      if (!yellowRange) continue;
-
-      const pixelIndex = i / 4;
-      const y = Math.floor(pixelIndex / width) / height;
-      const x = (pixelIndex % width) / width;
-
-      const targetR = 34 + Math.round(16 * (1 - y) + 8 * x);
-      const targetG = 78 + Math.round(50 * y + 14 * x);
-      const targetB = 56 + Math.round(22 * (1 - y));
-
-      const strength = Math.min(1, ((s - 0.35) / 0.55 + (v - 0.42) / 0.58) / 2);
-
-      pixels[i] = Math.round(r * (1 - strength) + targetR * strength);
-      pixels[i + 1] = Math.round(g * (1 - strength) + targetG * strength);
-      pixels[i + 2] = Math.round(b * (1 - strength) + targetB * strength);
-    }
-
-    tempContext.putImageData(imageData, 0, 0);
-    profile.dataset.bgModernized = "1";
-    profile.src = tempCanvas.toDataURL("image/webp", 0.95);
-  };
-
-  if (profile.complete && profile.naturalWidth) {
-    applyColorSwap();
-  } else {
-    profile.addEventListener("load", applyColorSwap, { once: true });
-  }
-}
-
-modernizeProfileBackground();

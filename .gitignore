@@ -1,0 +1,4 @@
+.tools/
+reports/
+lighthouse-report-*.json
+C:*

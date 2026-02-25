@@ -3,10 +3,55 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="CV of Iro Karavasili, Atlassian DevOps Engineer and Processes, Methods and Tools Engineer with experience in service delivery, ITSM, and platform administration."
+    />
+    <link rel="canonical" href="./" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta property="og:type" content="profile" />
+    <meta property="og:title" content="Iro Karavasili | CV" />
+    <meta
+      property="og:description"
+      content="Atlassian DevOps Engineer focused on process design, service delivery, and reliable enterprise tooling."
+    />
+    <meta property="og:url" content="./" />
+    <meta property="og:image" content="assets/profile.webp?v=2" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Iro Karavasili | CV" />
+    <meta
+      name="twitter:description"
+      content="Atlassian DevOps Engineer focused on process design, service delivery, and reliable enterprise tooling."
+    />
+    <meta name="twitter:image" content="assets/profile.webp?v=2" />
+    <meta name="theme-color" content="#010a18" />
     <title>Iro Karavasili | CV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap"
+    />
     <link rel="stylesheet" href="styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Iro Karavasili",
+        "jobTitle": "Atlassian DevOps Engineer",
+        "description": "Processes, Methods and Tools Engineer specialized in Atlassian ecosystems, DevOps support, and high-reliability service delivery.",
+        "url": "./",
+        "image": "assets/profile.webp?v=2",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Renesas Electronics"
+        },
+        "sameAs": ["https://www.linkedin.com/in/iro-karavasili-37379ab8/"]
+      }
+    </script>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <canvas id="constellation" aria-hidden="true"></canvas>
     <div class="cosmic-depth" aria-hidden="true">
       <span class="depth-layer depth-back"></span>
@@ -17,15 +62,22 @@
     <div class="cursor cursor-dot" aria-hidden="true"></div>
     <div class="cursor cursor-ring" aria-hidden="true"></div>
 
-    <main class="layout">
+    <main class="layout" id="main-content" tabindex="-1">
       <header class="hero reveal" id="top">
-        <nav class="top-nav">
+        <div class="hero-ambient-video-wrap" aria-hidden="true">
+          <video class="hero-ambient-video" autoplay muted loop playsinline preload="metadata" tabindex="-1">
+            <source src="assets/atlassian-logo-video.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <nav class="top-nav" aria-label="Primary">
           <a href="#top">Profile</a>
           <a href="#tools">Tools</a>
           <a href="#experience">Experience</a>
           <a href="#education">Education</a>
           <a href="#interests">Interests</a>
-          <button class="mode-toggle" type="button" aria-pressed="false">Quiet Mode</button>
+          <button class="mode-toggle" type="button" aria-pressed="false" aria-label="Switch to light mode">
+            Light Mode
+          </button>
         </nav>
 
         <div class="hero-grid">
@@ -35,7 +87,10 @@
                 class="profile-photo"
                 src="assets/profile.webp?v=2"
                 alt="Iro Karavasili profile picture"
+                width="98"
+                height="98"
                 loading="eager"
+                fetchpriority="high"
                 decoding="async"
               />
               <div>
@@ -55,10 +110,22 @@
                 class="button ghost"
                 href="https://www.linkedin.com/in/iro-karavasili-37379ab8/"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn profile (opens in a new tab)"
                 >LinkedIn</a
               >
+              <button
+                class="button ghost pdf-download"
+                type="button"
+                data-download-pdf
+                aria-describedby="pdf-help"
+              >
+                Download CV (PDF)
+              </button>
             </div>
+            <p id="pdf-help" class="sr-only">
+              Opens the browser print dialog so you can save this CV as a PDF.
+            </p>
 
             <ul class="meta-chips">
               <li>Greece</li>
@@ -201,6 +268,8 @@
                 class="company-logo company-logo-renesas"
                 src="assets/Renesas_Electronics_logo.webp"
                 alt="Renesas Electronics logo"
+                width="34"
+                height="34"
                 loading="lazy"
                 referrerpolicy="no-referrer"
                 onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"
@@ -219,6 +288,8 @@
                 class="company-logo"
                 src="assets/Mitel_logo.webp"
                 alt="Mitel logo"
+                width="34"
+                height="34"
                 loading="lazy"
                 referrerpolicy="no-referrer"
                 onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"
@@ -237,6 +308,8 @@
                 class="company-logo"
                 src="assets/Atos_logo.webp"
                 alt="Atos logo"
+                width="34"
+                height="34"
                 loading="lazy"
                 referrerpolicy="no-referrer"
                 onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"
@@ -276,6 +349,8 @@
                 class="company-logo"
                 src="assets/book.webp"
                 alt="Book logo"
+                width="34"
+                height="34"
                 loading="lazy"
                 referrerpolicy="no-referrer"
                 onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"
@@ -298,6 +373,8 @@
                 class="company-logo company-logo-lgcns"
                 src="assets/lg_cns_logo.webp"
                 alt="LG CNS logo"
+                width="34"
+                height="34"
                 loading="lazy"
                 referrerpolicy="no-referrer"
                 onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"
@@ -319,6 +396,8 @@
                 class="company-logo company-logo-elstat"
                 src="assets/elstat_logo.webp"
                 alt="ELSTAT logo"
+                width="34"
+                height="34"
                 loading="lazy"
                 referrerpolicy="no-referrer"
                 onerror="this.style.display='none';this.nextElementSibling.style.display='grid';"
@@ -374,6 +453,10 @@
             <p class="interest-copy">
               I enjoy traveling and exploring local culture, architecture, and daily life.
             </p>
+            <p class="interest-philosophy">
+              The world is a book, and those who do not travel read only one page.
+              <span class="interest-philosophy-author">- Saint Augustine</span>
+            </p>
           </article>
 
           <article class="interest-piece piece-plants" data-tilt>
@@ -382,6 +465,7 @@
             <h3>Plant Care Routine</h3>
             <p class="interest-copy">
               I enjoy caring for plants, a routine that supports calm and attention to detail.
+              I also enjoy learning how light, soil, and seasonal rhythms shape healthy growth.
             </p>
           </article>
 
